@@ -16,3 +16,13 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('allusers', function () {
+    $users = App\Models\User::all();
+    return view('allusers')->with('users', $users);
+});
+
+Route::get('user/{id}', function ($id) {
+    $user = App\Models\User::find($id);
+    return view('user')->with('user', $user);
+});
